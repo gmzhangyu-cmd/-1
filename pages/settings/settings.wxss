@@ -1,0 +1,9 @@
+.helper { display: block; margin-top: 10rpx; color: #89958e; font-size: 22rpx; line-height: 1.5; }
+.data-title, .data-subtitle { display: block; }
+.data-title { font-weight: 650; }
+.data-subtitle { margin-top: 7rpx; color: #7d8a83; font-size: 23rpx; }
+.local-tag { padding: 8rpx 15rpx; border-radius: 999rpx; background: #edf5f0; color: #287a55; font-size: 21rpx; }
+.privacy-card { padding: 29rpx; border: 1rpx solid #eadfcf; border-radius: 22rpx; background: #fffaf2; color: #746653; font-size: 23rpx; line-height: 1.7; }
+.privacy-card text { display: block; margin-bottom: 12rpx; }
+.privacy-card text:last-child { margin-bottom: 0; }
+.privacy-title { color: #624f36; font-weight: 650; }

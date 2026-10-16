@@ -1,0 +1,58 @@
+<view class="page">
+  <view class="hero">
+    <text class="hero-title">{{greeting}}</text>
+    <text class="hero-subtitle">{{today}} · 给身体多一点耐心</text>
+  </view>
+
+  <view class="alert-card">
+    <view>
+      <text class="alert-label">下次计划注射</text>
+      <text class="alert-date">{{nextInjection.date || '待记录'}}</text>
+      <text class="alert-note {{nextInjection.tone}}">{{nextInjection.text}}</text>
+    </view>
+    <button class="round-action" bindtap="goInjection">＋</button>
+  </view>
+
+  <view class="card">
+    <view class="row">
+      <text class="card-title no-margin">药品有效期</text>
+      <text class="tag {{expiry.tone}}">{{expiry.text}}</text>
+    </view>
+    <text class="expiry-date">{{expiry.days === null ? '请在设置或注射记录中填写' : ''}}</text>
+  </view>
+
+  <view class="section-heading row">
+    <text>今日状态</text>
+    <text class="section-link" bindtap="goDaily">去记录 →</text>
+  </view>
+  <view class="stat-grid">
+    <view class="stat-card">
+      <text class="stat-label">体重</text>
+      <text class="stat-value">{{weightText}}</text>
+    </view>
+    <view class="stat-card">
+      <text class="stat-label">排便</text>
+      <text class="stat-value compact">{{bowelText}}</text>
+    </view>
+  </view>
+
+  <view class="section-heading row">
+    <text>营养目标</text>
+    <text class="section-link" bindtap="goSettings">调整目标</text>
+  </view>
+  <view class="card nutrient-list">
+    <view class="nutrient" wx:for="{{nutrientCards}}" wx:key="key">
+      <view class="row nutrient-meta">
+        <text>{{item.label}}</text>
+        <text class="small {{item.reached ? 'success' : 'muted'}}">{{item.actual}} / {{item.target}} {{item.unit}} · {{item.status}}</text>
+      </view>
+      <view class="progress-track">
+        <view class="progress-fill {{item.reached ? 'complete' : ''}}" style="width: {{item.percent}}%"></view>
+      </view>
+    </view>
+  </view>
+
+  <view class="notice">
+    <text>记录工具不替代医疗建议。剂量、频率和不适处理请遵医嘱。</text>
+  </view>
+</view>

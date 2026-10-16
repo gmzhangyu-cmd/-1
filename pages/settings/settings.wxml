@@ -1,0 +1,59 @@
+<view class="page">
+  <view class="hero">
+    <text class="hero-title">目标与设置</text>
+    <text class="hero-subtitle">目标应结合医生或营养师建议设置</text>
+  </view>
+
+  <view class="card">
+    <text class="card-title">每日营养目标</text>
+    <view class="two-column">
+      <view class="field">
+        <text class="field-label">蛋白质（g）</text>
+        <input class="input" type="digit" value="{{settings.targets.protein}}" data-field="protein" bindinput="onTargetInput" />
+      </view>
+      <view class="field">
+        <text class="field-label">碳水（g）</text>
+        <input class="input" type="digit" value="{{settings.targets.carbs}}" data-field="carbs" bindinput="onTargetInput" />
+      </view>
+      <view class="field">
+        <text class="field-label">脂肪（g）</text>
+        <input class="input" type="digit" value="{{settings.targets.fat}}" data-field="fat" bindinput="onTargetInput" />
+      </view>
+      <view class="field">
+        <text class="field-label">热量（kcal）</text>
+        <input class="input" type="number" value="{{settings.targets.calories}}" data-field="calories" bindinput="onTargetInput" />
+      </view>
+    </view>
+  </view>
+
+  <view class="card">
+    <text class="card-title">用药记录设置</text>
+    <view class="field">
+      <text class="field-label">计划注射间隔（天）</text>
+      <input class="input" type="number" value="{{settings.injectionIntervalDays}}" data-field="injectionIntervalDays" bindinput="onFieldInput" />
+      <text class="helper">仅用于计算日期提醒，请按照医生确定的频率填写。</text>
+    </view>
+    <view class="field">
+      <text class="field-label">当前药品有效期</text>
+      <picker mode="date" value="{{settings.medicationExpiryDate}}" bindchange="onFieldInput" data-field="medicationExpiryDate">
+        <view class="picker">{{settings.medicationExpiryDate || '请选择日期'}}</view>
+      </picker>
+    </view>
+    <button class="primary-button" bindtap="save">保存目标与设置</button>
+  </view>
+
+  <view class="card">
+    <view class="row">
+      <view><text class="data-title">本机数据</text><text class="data-subtitle">{{stats.daily}} 天记录 · {{stats.injections}} 次注射</text></view>
+      <text class="local-tag">仅本机</text>
+    </view>
+    <button class="secondary-button" bindtap="copyBackup">复制 JSON 备份</button>
+    <button class="danger-button" bindtap="clearAll">清空全部数据</button>
+  </view>
+
+  <view class="privacy-card">
+    <text class="privacy-title">隐私与医疗声明</text>
+    <text>所有记录只保存在当前设备的微信本地存储中，不会自动上传。清理微信缓存、删除小程序或更换设备可能造成数据丢失，请定期备份。</text>
+    <text>本工具仅用于记录，不能诊断疾病、评估不良反应或决定用药剂量。如有持续呕吐、严重腹痛、脱水或其他明显不适，请及时就医。</text>
+  </view>
+</view>

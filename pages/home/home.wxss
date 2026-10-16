@@ -1,0 +1,39 @@
+.alert-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 22rpx;
+  padding: 32rpx;
+  border-radius: 28rpx;
+  background: linear-gradient(135deg, #1d6847, #3f936b);
+  color: #fff;
+  box-shadow: 0 18rpx 42rpx rgba(32, 104, 72, .2);
+}
+.alert-label, .alert-date, .alert-note { display: block; }
+.alert-label { opacity: .8; font-size: 24rpx; }
+.alert-date { margin: 8rpx 0 4rpx; font-size: 42rpx; font-weight: 700; }
+.alert-note { color: rgba(255,255,255,.82); font-size: 24rpx; }
+.alert-note.danger, .alert-note.warning { color: #fff0bb; }
+.round-action {
+  width: 78rpx; height: 78rpx; margin: 0; padding: 0; border-radius: 50%;
+  background: rgba(255,255,255,.18); color: #fff; font-size: 42rpx; line-height: 74rpx;
+}
+.round-action::after { border: 0; }
+.no-margin { margin: 0; }
+.expiry-date { display: block; margin-top: 14rpx; color: #87928c; font-size: 24rpx; }
+.section-heading { margin: 34rpx 4rpx 18rpx; font-size: 30rpx; font-weight: 650; }
+.section-link { color: #287a55; font-size: 24rpx; font-weight: 500; }
+.stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18rpx; }
+.stat-card { min-height: 125rpx; padding: 25rpx; border-radius: 24rpx; background: #fff; border: 1rpx solid #e6ece8; }
+.stat-label, .stat-value { display: block; }
+.stat-label { color: #79877f; font-size: 24rpx; }
+.stat-value { margin-top: 15rpx; font-size: 32rpx; font-weight: 650; }
+.stat-value.compact { font-size: 25rpx; line-height: 1.5; }
+.nutrient-list { padding-top: 10rpx; padding-bottom: 10rpx; }
+.nutrient { padding: 22rpx 0; border-bottom: 1rpx solid #edf1ee; }
+.nutrient:last-child { border-bottom: 0; }
+.nutrient-meta { margin-bottom: 14rpx; }
+.progress-track { height: 13rpx; overflow: hidden; border-radius: 999rpx; background: #edf1ee; }
+.progress-fill { height: 100%; border-radius: 999rpx; background: #75aa8d; transition: width .2s; }
+.progress-fill.complete { background: #287a55; }
+.notice { padding: 22rpx 28rpx; color: #7b8982; font-size: 23rpx; line-height: 1.6; text-align: center; }

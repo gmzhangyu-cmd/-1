@@ -1,0 +1,16 @@
+.date-chip { padding: 14rpx 20rpx; border-radius: 16rpx; background: #e7f1eb; color: #286347; font-size: 25rpx; }
+.no-margin { margin: 0; }
+.card-heading { margin-bottom: 22rpx; }
+.add-link { color: #287a55; font-size: 25rpx; }
+.food-item { margin-bottom: 22rpx; padding: 22rpx; border: 1rpx solid #e4ebe7; border-radius: 20rpx; background: #fafcfb; }
+.food-heading { margin-bottom: 16rpx; }
+.food-number { font-weight: 600; }
+.remove-link { color: #b34a52; font-size: 24rpx; }
+.food-name { margin-bottom: 16rpx; background: #fff; }
+.macro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14rpx; }
+.mini-label { display: block; margin-bottom: 7rpx; color: #748178; font-size: 21rpx; }
+.mini-input { box-sizing: border-box; height: 72rpx; padding: 14rpx 18rpx; border: 1rpx solid #e1e8e3; border-radius: 14rpx; background: #fff; }
+.total-panel { margin-top: 28rpx; padding: 24rpx; border-radius: 18rpx; background: #edf5f0; }
+.total-title { display: block; margin-bottom: 15rpx; color: #315e48; font-weight: 650; }
+.total-row { display: flex; justify-content: space-between; padding: 8rpx 0; font-size: 24rpx; }
+.ellipsis { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }

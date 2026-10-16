@@ -1,0 +1,43 @@
+<view class="page">
+  <view class="hero">
+    <text class="hero-title">历史记录</text>
+    <text class="hero-subtitle">回看身体变化与日常习惯</text>
+  </view>
+
+  <view class="tabs">
+    <view class="tab {{activeTab === 'daily' ? 'active' : ''}}" data-tab="daily" bindtap="changeTab">每日记录</view>
+    <view class="tab {{activeTab === 'injection' ? 'active' : ''}}" data-tab="injection" bindtap="changeTab">注射记录</view>
+  </view>
+
+  <block wx:if="{{activeTab === 'daily'}}">
+    <view class="empty" wx:if="{{!dailyRecords.length}}">还没有每日记录</view>
+    <view class="record-card" wx:for="{{dailyRecords}}" wx:key="id">
+      <view class="row record-head">
+        <text class="record-date">{{item.date}}</text>
+        <text class="delete" data-type="daily" data-id="{{item.id}}" bindtap="deleteRecord">删除</text>
+      </view>
+      <view class="record-grid">
+        <view><text class="record-label">体重</text><text class="record-value">{{item.weight ? item.weight + ' kg' : '—'}}</text></view>
+        <view><text class="record-label">排便</text><text class="record-value small-value">{{item.bowelText}}</text></view>
+      </view>
+      <text class="record-detail">{{item.totalText}}</text>
+      <text class="record-note" wx:if="{{item.notes}}">{{item.notes}}</text>
+    </view>
+  </block>
+
+  <block wx:if="{{activeTab === 'injection'}}">
+    <view class="empty" wx:if="{{!injections.length}}">还没有注射记录</view>
+    <view class="record-card" wx:for="{{injections}}" wx:key="id">
+      <view class="row record-head">
+        <view><text class="record-date">{{item.date}}</text><text class="record-time">{{item.time}}</text></view>
+        <text class="delete" data-type="injection" data-id="{{item.id}}" bindtap="deleteRecord">删除</text>
+      </view>
+      <view class="row injection-main">
+        <text>{{item.site}}</text>
+        <text class="tag">{{item.dosage ? item.dosage + ' mg' : '剂量未填'}}</text>
+      </view>
+      <text class="record-detail" wx:if="{{item.expiryDate}}">有效期：{{item.expiryDate}}</text>
+      <text class="record-note" wx:if="{{item.notes}}">{{item.notes}}</text>
+    </view>
+  </block>
+</view>

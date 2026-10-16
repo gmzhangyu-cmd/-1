@@ -1,0 +1,55 @@
+<view class="page">
+  <view class="hero">
+    <text class="hero-title">记录一次注射</text>
+    <text class="hero-subtitle">准确记录时间与部位，轮换注射位置</text>
+  </view>
+
+  <view class="card">
+    <view class="two-column">
+      <view class="field">
+        <text class="field-label">日期 *</text>
+        <picker mode="date" value="{{form.date}}" bindchange="onFieldInput" data-field="date">
+          <view class="picker">{{form.date}}</view>
+        </picker>
+      </view>
+      <view class="field">
+        <text class="field-label">时间 *</text>
+        <picker mode="time" value="{{form.time}}" bindchange="onFieldInput" data-field="time">
+          <view class="picker">{{form.time}}</view>
+        </picker>
+      </view>
+    </view>
+    <view class="two-column">
+      <view class="field">
+        <text class="field-label">剂量（mg）</text>
+        <input class="input" type="digit" value="{{form.dosage}}" placeholder="遵医嘱填写" data-field="dosage" bindinput="onFieldInput" />
+      </view>
+      <view class="field">
+        <text class="field-label">注射部位 *</text>
+        <picker range="{{sites}}" value="{{siteIndex}}" bindchange="onSiteChange">
+          <view class="picker">{{form.site}}</view>
+        </picker>
+      </view>
+    </view>
+    <view class="field">
+      <text class="field-label">药品有效期</text>
+      <picker mode="date" value="{{form.expiryDate}}" bindchange="onFieldInput" data-field="expiryDate">
+        <view class="picker">{{form.expiryDate || '请选择包装上标注的日期'}}</view>
+      </picker>
+    </view>
+    <view class="field">
+      <text class="field-label">批号（可选）</text>
+      <input class="input" value="{{form.batchNumber}}" placeholder="便于追溯" data-field="batchNumber" bindinput="onFieldInput" />
+    </view>
+    <view class="field">
+      <text class="field-label">备注（可选）</text>
+      <textarea class="textarea" value="{{form.notes}}" maxlength="300" placeholder="例如当时感受、皮肤反应等" data-field="notes" bindinput="onFieldInput" />
+    </view>
+    <button class="primary-button" bindtap="save">保存注射记录</button>
+  </view>
+
+  <view class="tip-card">
+    <text class="tip-title">温馨提示</text>
+    <text>本页只记录医生已经确定的用药方案，不会推荐或调整剂量。出现持续或严重不适时，请及时联系医生。</text>
+  </view>
+</view>

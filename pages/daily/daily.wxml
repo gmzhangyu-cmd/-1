@@ -1,0 +1,83 @@
+<view class="page">
+  <view class="hero row">
+    <view>
+      <text class="hero-title">每日记录</text>
+      <text class="hero-subtitle">饮食与身体变化</text>
+    </view>
+    <picker mode="date" value="{{form.date}}" bindchange="onDateChange">
+      <view class="date-chip">{{form.date}}</view>
+    </picker>
+  </view>
+
+  <view class="card">
+    <text class="card-title">身体数据</text>
+    <view class="two-column">
+      <view class="field">
+        <text class="field-label">体重（kg）</text>
+        <input class="input" type="digit" value="{{form.weight}}" placeholder="例如 65.5" data-field="weight" bindinput="onFieldInput" />
+      </view>
+      <view class="field">
+        <text class="field-label">饮水（ml）</text>
+        <input class="input" type="number" value="{{form.water}}" placeholder="例如 1500" data-field="water" bindinput="onFieldInput" />
+      </view>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="row card-heading">
+      <text class="card-title no-margin">今天吃了什么</text>
+      <text class="add-link" bindtap="addFood">＋ 添加食物</text>
+    </view>
+    <view class="food-item" wx:for="{{form.foods}}" wx:key="index">
+      <view class="row food-heading">
+        <text class="food-number">食物 {{index + 1}}</text>
+        <text class="remove-link" data-index="{{index}}" bindtap="removeFood">删除</text>
+      </view>
+      <input class="input food-name" value="{{item.name}}" placeholder="名称与份量，例如：鸡胸肉 150g" data-index="{{index}}" data-field="name" bindinput="onFoodInput" />
+      <view class="macro-grid">
+        <view><text class="mini-label">蛋白质 g</text><input class="mini-input" type="digit" value="{{item.protein}}" placeholder="0" data-index="{{index}}" data-field="protein" bindinput="onFoodInput" /></view>
+        <view><text class="mini-label">碳水 g</text><input class="mini-input" type="digit" value="{{item.carbs}}" placeholder="0" data-index="{{index}}" data-field="carbs" bindinput="onFoodInput" /></view>
+        <view><text class="mini-label">脂肪 g</text><input class="mini-input" type="digit" value="{{item.fat}}" placeholder="0" data-index="{{index}}" data-field="fat" bindinput="onFoodInput" /></view>
+        <view><text class="mini-label">热量 kcal</text><input class="mini-input" type="number" value="{{item.calories}}" placeholder="0" data-index="{{index}}" data-field="calories" bindinput="onFoodInput" /></view>
+      </view>
+    </view>
+
+    <view class="total-panel">
+      <text class="total-title">今日合计与目标</text>
+      <view class="total-row" wx:for="{{progress}}" wx:key="key">
+        <text>{{item.label}}</text>
+        <text class="{{item.reached ? 'success' : 'muted'}}">{{item.actual}} / {{item.target}} {{item.unit}} · {{item.status}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="card">
+    <text class="card-title">排便情况</text>
+    <view class="two-column">
+      <view class="field">
+        <text class="field-label">次数</text>
+        <picker range="{{bowelCounts}}" value="{{bowelCountIndex}}" bindchange="onBowelCountChange">
+          <view class="picker">{{bowelCounts[bowelCountIndex]}}</view>
+        </picker>
+      </view>
+      <view class="field">
+        <text class="field-label">Bristol 分型</text>
+        <picker range="{{bristolLabels}}" value="{{bristolIndex}}" bindchange="onBristolChange">
+          <view class="picker ellipsis">{{bristolLabels[bristolIndex]}}</view>
+        </picker>
+      </view>
+    </view>
+    <view class="field">
+      <text class="field-label">排便备注</text>
+      <input class="input" value="{{form.bowelNotes}}" placeholder="例如腹泻、便秘或不适" data-field="bowelNotes" bindinput="onFieldInput" />
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="field">
+      <text class="field-label">今日其他备注</text>
+      <textarea class="textarea" value="{{form.notes}}" maxlength="300" placeholder="精神、睡眠、运动或身体感受" data-field="notes" bindinput="onFieldInput" />
+    </view>
+    <button class="primary-button" bindtap="save">保存每日记录</button>
+  </view>
+</view>

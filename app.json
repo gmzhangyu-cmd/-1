@@ -1,0 +1,31 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/injection/injection",
+    "pages/daily/daily",
+    "pages/history/history",
+    "pages/settings/settings"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#f7fbf8",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "轻记健康",
+    "backgroundColor": "#f4f7f5",
+    "backgroundTextStyle": "light"
+  },
+  "tabBar": {
+    "color": "#7a8580",
+    "selectedColor": "#287a55",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "white",
+    "list": [
+      { "pagePath": "pages/home/home", "text": "今日" },
+      { "pagePath": "pages/injection/injection", "text": "注射" },
+      { "pagePath": "pages/daily/daily", "text": "记录" },
+      { "pagePath": "pages/history/history", "text": "历史" },
+      { "pagePath": "pages/settings/settings", "text": "设置" }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}
