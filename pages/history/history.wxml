@@ -1,42 +1,30 @@
 <view class="page">
-  <view class="hero">
-    <text class="hero-title">历史记录</text>
-    <text class="hero-subtitle">回看身体变化与日常习惯</text>
-  </view>
-
+  <view class="hero"><text class="hero-title">记录时光</text><text class="hero-subtitle">每一次记录，都是认真生活的痕迹</text></view>
   <view class="tabs">
     <view class="tab {{activeTab === 'daily' ? 'active' : ''}}" data-tab="daily" bindtap="changeTab">每日记录</view>
-    <view class="tab {{activeTab === 'injection' ? 'active' : ''}}" data-tab="injection" bindtap="changeTab">注射记录</view>
+    <view class="tab {{activeTab === 'shot' ? 'active' : ''}}" data-tab="shot" bindtap="changeTab">💉 记录</view>
   </view>
-
   <block wx:if="{{activeTab === 'daily'}}">
     <view class="empty" wx:if="{{!dailyRecords.length}}">还没有每日记录</view>
     <view class="record-card" wx:for="{{dailyRecords}}" wx:key="id">
-      <view class="row record-head">
-        <text class="record-date">{{item.date}}</text>
-        <text class="delete" data-type="daily" data-id="{{item.id}}" bindtap="deleteRecord">删除</text>
+      <view class="row record-head"><text class="record-date">{{item.date}}</text><text class="delete" data-type="daily" data-id="{{item.id}}" bindtap="deleteRecord">删除</text></view>
+      <view class="metric-row">
+        <view><text class="metric-label">体重</text><text class="metric-value">{{item.weight ? item.weight + ' kg' : '—'}}</text></view>
+        <view><text class="metric-label">BMI</text><text class="metric-value">{{item.bmiText}}</text></view>
+        <view><text class="metric-label">体脂率</text><text class="metric-value">{{item.bodyFat ? item.bodyFat + '%' : '—'}}</text></view>
+        <view><text class="metric-label">腰围</text><text class="metric-value">{{item.waist ? item.waist + ' cm' : '—'}}</text></view>
       </view>
-      <view class="record-grid">
-        <view><text class="record-label">体重</text><text class="record-value">{{item.weight ? item.weight + ' kg' : '—'}}</text></view>
-        <view><text class="record-label">排便</text><text class="record-value small-value">{{item.bowelText}}</text></view>
-      </view>
-      <text class="record-detail">{{item.totalText}}</text>
+      <view class="soft-line">🍽️ {{item.mealText}}</view>
+      <view class="row details"><text>🫧 {{item.waterText}}</text><text>排便：{{item.bowelText}}</text></view>
       <text class="record-note" wx:if="{{item.notes}}">{{item.notes}}</text>
     </view>
   </block>
-
-  <block wx:if="{{activeTab === 'injection'}}">
-    <view class="empty" wx:if="{{!injections.length}}">还没有注射记录</view>
-    <view class="record-card" wx:for="{{injections}}" wx:key="id">
-      <view class="row record-head">
-        <view><text class="record-date">{{item.date}}</text><text class="record-time">{{item.time}}</text></view>
-        <text class="delete" data-type="injection" data-id="{{item.id}}" bindtap="deleteRecord">删除</text>
-      </view>
-      <view class="row injection-main">
-        <text>{{item.site}}</text>
-        <text class="tag">{{item.dosage ? item.dosage + ' mg' : '剂量未填'}}</text>
-      </view>
-      <text class="record-detail" wx:if="{{item.expiryDate}}">有效期：{{item.expiryDate}}</text>
+  <block wx:if="{{activeTab === 'shot'}}">
+    <view class="empty" wx:if="{{!shots.length}}">还没有 💉 记录</view>
+    <view class="record-card" wx:for="{{shots}}" wx:key="id">
+      <view class="row record-head"><view class="shot-title"><text class="shot-emoji">💉</text><text class="record-date">{{item.date}}</text><text class="record-time">{{item.time}}</text></view><text class="delete" data-type="shot" data-id="{{item.id}}" bindtap="deleteRecord">删除</text></view>
+      <view class="row shot-main"><text>{{item.site}}</text><text class="tag">{{item.dosage ? item.dosage + ' mg' : '剂量未填'}}</text></view>
+      <text class="soft-line" wx:if="{{item.expiryDate}}">有效期：{{item.expiryDate}}</text>
       <text class="record-note" wx:if="{{item.notes}}">{{item.notes}}</text>
     </view>
   </block>

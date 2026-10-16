@@ -2,20 +2,9 @@ const test = require('node:test')
 const assert = require('node:assert/strict')
 const health = require('../utils/health')
 
-test('汇总多条食物的营养数据', () => {
-  assert.deepEqual(health.sumNutrients([
-    { protein: 20.2, carbs: 10, fat: 2, calories: 150 },
-    { protein: '9.9', carbs: '30.5', fat: '5.2', calories: '220' }
-  ]), { protein: 30.1, carbs: 40.5, fat: 7.2, calories: 370 })
-})
-
-test('判断营养目标是否达标并限制进度条宽度', () => {
-  assert.deepEqual(health.nutrientProgress(80, 100), {
-    ratio: 0.8, percent: 80, status: '还差 20g', reached: false
-  })
-  assert.equal(health.nutrientProgress(120, 100).percent, 100)
-  assert.equal(health.nutrientProgress(120, 100).reached, true)
-  assert.equal(health.nutrientProgress(1500, 1800, 'kcal').status, '还差 300kcal')
+test('根据身高体重计算 BMI', () => {
+  assert.equal(health.calculateBMI(60, 165), 22)
+  assert.equal(health.calculateBMI('', 165), null)
 })
 
 test('计算药品有效期状态', () => {
@@ -25,12 +14,26 @@ test('计算药品有效期状态', () => {
   assert.equal(health.expirySummary('2026-10-26', now).text, '还有 10 天到期')
 })
 
-test('按最后一次记录与间隔计算计划注射日', () => {
-  const now = new Date(2026, 9, 16, 12)
-  const result = health.nextInjectionSummary([
+test('按最后一次记录与间隔计算计划日', () => {
+  const result = health.nextShotSummary([
     { date: '2026-10-10', time: '20:00' },
     { date: '2026-10-09', time: '20:00' }
-  ], 7, now)
+  ], 7, new Date(2026, 9, 16, 12))
   assert.equal(result.date, '2026-10-17')
   assert.equal(result.text, '距计划还有 1 天')
+})
+
+test('按四种瓶型统计饮水', () => {
+  assert.deepEqual(health.waterSummary({ 100: 1, 300: 2, 500: 1, 1000: 1 }), { count: 5, total: 2200, liters: 2.2 })
+})
+
+test('体重变化返回短暂鼓励语', () => {
+  assert.equal(health.weightFeedback(64.5, 65), '恭喜，离目标更近一步！')
+  assert.equal(health.weightFeedback(65.5, 65), '波动很正常，坚持就是胜利。')
+  assert.equal(health.weightFeedback(65, 65), '')
+})
+
+test('激励语共有 20 条并按 20 天重复', () => {
+  assert.equal(health.MOTIVATION_QUOTES.length, 20)
+  assert.equal(health.quoteForDate('2026-10-01'), health.quoteForDate('2026-10-21'))
 })

@@ -1,52 +1,40 @@
 <view class="page">
+  <view class="feedback-pop" wx:if="{{feedbackMessage}}">{{feedbackMessage}}</view>
   <view class="hero row">
-    <view>
-      <text class="hero-title">每日记录</text>
-      <text class="hero-subtitle">饮食与身体变化</text>
-    </view>
-    <picker mode="date" value="{{form.date}}" bindchange="onDateChange">
-      <view class="date-chip">{{form.date}}</view>
-    </picker>
+    <view><text class="hero-title">今日记录</text><text class="hero-subtitle">轻轻记下，不必追求完美</text></view>
+    <picker mode="date" value="{{form.date}}" bindchange="onDateChange"><view class="date-chip">{{form.date}}</view></picker>
   </view>
 
   <view class="card">
-    <text class="card-title">身体数据</text>
+    <view class="row card-head"><text class="card-title no-margin">身体数据</text><text class="pink-link" bindtap="goTrends">变化曲线 →</text></view>
     <view class="two-column">
-      <view class="field">
-        <text class="field-label">体重（kg）</text>
-        <input class="input" type="digit" value="{{form.weight}}" placeholder="例如 65.5" data-field="weight" bindinput="onFieldInput" />
-      </view>
-      <view class="field">
-        <text class="field-label">饮水（ml）</text>
-        <input class="input" type="number" value="{{form.water}}" placeholder="例如 1500" data-field="water" bindinput="onFieldInput" />
-      </view>
+      <view class="field"><text class="field-label">身高（cm）</text><input class="input" type="digit" value="{{form.height}}" placeholder="例如 165" data-field="height" bindinput="onFieldInput" /></view>
+      <view class="field"><text class="field-label">体重（kg）</text><input class="input" type="digit" value="{{form.weight}}" placeholder="例如 65.5" data-field="weight" bindinput="onFieldInput" /></view>
+    </view>
+    <view class="bmi-box"><text>BMI</text><text class="bmi-value">{{bmi}}</text><text class="bmi-note">仅作记录，不作诊断</text></view>
+    <view class="two-column">
+      <view class="field"><text class="field-label">体脂率（%）</text><input class="input" type="digit" value="{{form.bodyFat}}" placeholder="选填" data-field="bodyFat" bindinput="onFieldInput" /></view>
+      <view class="field"><text class="field-label">腰围（cm）</text><input class="input" type="digit" value="{{form.waist}}" placeholder="选填" data-field="waist" bindinput="onFieldInput" /></view>
+      <view class="field"><text class="field-label">臀围（cm）</text><input class="input" type="digit" value="{{form.hip}}" placeholder="选填" data-field="hip" bindinput="onFieldInput" /></view>
+      <view class="field"><text class="field-label">大腿围（cm）</text><input class="input" type="digit" value="{{form.thigh}}" placeholder="选填" data-field="thigh" bindinput="onFieldInput" /></view>
+      <view class="field"><text class="field-label">上臂围（cm）</text><input class="input" type="digit" value="{{form.upperArm}}" placeholder="选填" data-field="upperArm" bindinput="onFieldInput" /></view>
     </view>
   </view>
 
   <view class="card">
-    <view class="row card-heading">
-      <text class="card-title no-margin">今天吃了什么</text>
-      <text class="add-link" bindtap="addFood">＋ 添加食物</text>
-    </view>
-    <view class="food-item" wx:for="{{form.foods}}" wx:key="index">
-      <view class="row food-heading">
-        <text class="food-number">食物 {{index + 1}}</text>
-        <text class="remove-link" data-index="{{index}}" bindtap="removeFood">删除</text>
-      </view>
-      <input class="input food-name" value="{{item.name}}" placeholder="名称与份量，例如：鸡胸肉 150g" data-index="{{index}}" data-field="name" bindinput="onFoodInput" />
-      <view class="macro-grid">
-        <view><text class="mini-label">蛋白质 g</text><input class="mini-input" type="digit" value="{{item.protein}}" placeholder="0" data-index="{{index}}" data-field="protein" bindinput="onFoodInput" /></view>
-        <view><text class="mini-label">碳水 g</text><input class="mini-input" type="digit" value="{{item.carbs}}" placeholder="0" data-index="{{index}}" data-field="carbs" bindinput="onFoodInput" /></view>
-        <view><text class="mini-label">脂肪 g</text><input class="mini-input" type="digit" value="{{item.fat}}" placeholder="0" data-index="{{index}}" data-field="fat" bindinput="onFoodInput" /></view>
-        <view><text class="mini-label">热量 kcal</text><input class="mini-input" type="number" value="{{item.calories}}" placeholder="0" data-index="{{index}}" data-field="calories" bindinput="onFoodInput" /></view>
-      </view>
-    </view>
+    <text class="card-title">一日三餐</text>
+    <view class="meal-row"><text class="meal-icon">🌤️</text><view class="meal-content"><text class="field-label">早餐</text><textarea class="meal-input" value="{{form.meals.breakfast}}" maxlength="150" placeholder="今天早餐吃了什么？" data-meal="breakfast" bindinput="onMealInput" /></view></view>
+    <view class="meal-row"><text class="meal-icon">☀️</text><view class="meal-content"><text class="field-label">午餐</text><textarea class="meal-input" value="{{form.meals.lunch}}" maxlength="150" placeholder="今天午餐吃了什么？" data-meal="lunch" bindinput="onMealInput" /></view></view>
+    <view class="meal-row last"><text class="meal-icon">🌙</text><view class="meal-content"><text class="field-label">晚餐</text><textarea class="meal-input" value="{{form.meals.dinner}}" maxlength="150" placeholder="今天晚餐吃了什么？" data-meal="dinner" bindinput="onMealInput" /></view></view>
+  </view>
 
-    <view class="total-panel">
-      <text class="total-title">今日合计与目标</text>
-      <view class="total-row" wx:for="{{progress}}" wx:key="key">
-        <text>{{item.label}}</text>
-        <text class="{{item.reached ? 'success' : 'muted'}}">{{item.actual}} / {{item.target}} {{item.unit}} · {{item.status}}</text>
+  <view class="card">
+    <view class="row card-head"><text class="card-title no-margin">今天喝了几瓶？</text><text class="water-total">{{water.count}} 瓶 · 约 {{water.liters}} L</text></view>
+    <view class="bottle-grid">
+      <view class="bottle-option" wx:for="{{bottleOptions}}" wx:key="size">
+        <view class="bottle-wrap"><view class="bottle-cap"></view><view class="bottle {{item.className}}"><view class="water-fill"></view></view></view>
+        <text class="bottle-label">{{item.label}}</text>
+        <view class="counter"><text data-size="{{item.size}}" data-change="-1" bindtap="adjustBottle">−</text><text class="count">{{item.count}}</text><text data-size="{{item.size}}" data-change="1" bindtap="adjustBottle">＋</text></view>
       </view>
     </view>
   </view>
@@ -54,30 +42,14 @@
   <view class="card">
     <text class="card-title">排便情况</text>
     <view class="two-column">
-      <view class="field">
-        <text class="field-label">次数</text>
-        <picker range="{{bowelCounts}}" value="{{bowelCountIndex}}" bindchange="onBowelCountChange">
-          <view class="picker">{{bowelCounts[bowelCountIndex]}}</view>
-        </picker>
-      </view>
-      <view class="field">
-        <text class="field-label">Bristol 分型</text>
-        <picker range="{{bristolLabels}}" value="{{bristolIndex}}" bindchange="onBristolChange">
-          <view class="picker ellipsis">{{bristolLabels[bristolIndex]}}</view>
-        </picker>
-      </view>
+      <view class="field"><text class="field-label">次数</text><picker range="{{bowelCounts}}" value="{{bowelCountIndex}}" bindchange="onBowelCountChange"><view class="picker">{{bowelCounts[bowelCountIndex]}}</view></picker></view>
+      <view class="field"><text class="field-label">Bristol 分型</text><picker range="{{bristolLabels}}" value="{{bristolIndex}}" bindchange="onBristolChange"><view class="picker ellipsis">{{bristolLabels[bristolIndex]}}</view></picker></view>
     </view>
-    <view class="field">
-      <text class="field-label">排便备注</text>
-      <input class="input" value="{{form.bowelNotes}}" placeholder="例如腹泻、便秘或不适" data-field="bowelNotes" bindinput="onFieldInput" />
-    </view>
+    <view class="field"><text class="field-label">备注</text><input class="input" value="{{form.bowelNotes}}" placeholder="例如便秘或不适" data-field="bowelNotes" bindinput="onFieldInput" /></view>
   </view>
 
   <view class="card">
-    <view class="field">
-      <text class="field-label">今日其他备注</text>
-      <textarea class="textarea" value="{{form.notes}}" maxlength="300" placeholder="精神、睡眠、运动或身体感受" data-field="notes" bindinput="onFieldInput" />
-    </view>
-    <button class="primary-button" bindtap="save">保存每日记录</button>
+    <view class="field"><text class="field-label">今日其他备注</text><textarea class="textarea" value="{{form.notes}}" maxlength="300" placeholder="睡眠、运动或身体感受" data-field="notes" bindinput="onFieldInput" /></view>
+    <button class="primary-button" bindtap="save">保存今日记录</button>
   </view>
 </view>

@@ -1,0 +1,23 @@
+<view class="page">
+  <view class="hero"><text class="hero-title">身体变化</text><text class="hero-subtitle">看见趋势，不被某一天的波动影响</text></view>
+
+  <scroll-view class="metric-tabs" scroll-x enable-flex>
+    <view class="metric-tab {{activeKey === item.key ? 'active' : ''}}" wx:for="{{metrics}}" wx:key="key" data-key="{{item.key}}" bindtap="selectMetric">{{item.label}}</view>
+  </scroll-view>
+
+  <view class="chart-card">
+    <view class="row chart-title"><view><text class="chart-label">{{activeMetric.label}}</text><text class="chart-count">{{points.length}} 条记录</text></view><text class="chart-unit">{{activeMetric.unit}}</text></view>
+    <canvas wx:if="{{hasData}}" class="chart" canvas-id="trendCanvas" width="{{canvasWidth}}" height="{{canvasHeight}}" style="width: {{canvasWidth}}px; height: {{canvasHeight}}px;"></canvas>
+    <view wx:else class="empty">记录至少一次 {{activeMetric.label}} 后，这里会出现变化曲线</view>
+  </view>
+
+  <view class="section-title">最新概览</view>
+  <view class="summary-grid">
+    <view class="summary-card" wx:for="{{summaries}}" wx:key="key" data-key="{{item.key}}" bindtap="selectMetric">
+      <text class="summary-label">{{item.label}}</text>
+      <text class="summary-value">{{item.latest}}{{item.latest === '—' ? '' : item.unit}}</text>
+      <text class="summary-change">{{item.changeText}}</text>
+    </view>
+  </view>
+  <view class="trend-note">曲线仅用于回顾个人记录，不提供健康诊断。测量时尽量保持相同时间和条件。</view>
+</view>

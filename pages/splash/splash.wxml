@@ -1,0 +1,9 @@
+<view class="splash {{leaving ? 'leaving' : ''}}" bindtap="skip">
+  <image class="welcome-image" src="/assets/welcome.webp" mode="aspectFill" />
+  <view class="soft-mask"></view>
+  <view class="quote-wrap">
+    <text class="tiny-mark">TODAY</text>
+    <text class="quote">{{quote}}</text>
+    <text class="skip">轻触进入</text>
+  </view>
+</view>

@@ -1,0 +1,9 @@
+<view class="register-page">
+  <view class="phone-art">♡</view>
+  <text class="register-title">欢迎来到轻记健康</text>
+  <text class="register-subtitle">手机号只保存在当前设备，用于标记你的本机记录</text>
+  <view class="phone-field"><text class="prefix">+86</text><input class="phone-input" type="number" maxlength="11" value="{{phone}}" placeholder="请输入手机号" bindinput="onPhoneInput" /></view>
+  <checkbox-group bindchange="onAgreementChange"><label class="agreement"><checkbox value="agree" color="#dc628b" checked="{{agreed}}" /><text>我已了解：当前版本不会发送短信验证码，也不会上传手机号；清除本机数据后信息会消失。</text></label></checkbox-group>
+  <button class="primary-button register-button" bindtap="register">手机号注册</button>
+  <text class="backend-note">正式的短信验证和跨设备账号，需要接入已认证的小程序后台后启用。</text>
+</view>

@@ -1,58 +1,56 @@
 <view class="page">
-  <view class="hero">
-    <text class="hero-title">{{greeting}}</text>
-    <text class="hero-subtitle">{{today}} · 给身体多一点耐心</text>
+  <view class="topbar row">
+    <text class="date">{{today}}</text>
+    <view class="register-chip" bindtap="goRegister">{{profileLabel}}</view>
   </view>
 
-  <view class="alert-card">
-    <view>
-      <text class="alert-label">下次计划注射</text>
-      <text class="alert-date">{{nextInjection.date || '待记录'}}</text>
-      <text class="alert-note {{nextInjection.tone}}">{{nextInjection.text}}</text>
-    </view>
-    <button class="round-action" bindtap="goInjection">＋</button>
+  <view class="quote-hero">
+    <text class="quote-kicker">TODAY</text>
+    <text class="quote-text">{{quote}}</text>
   </view>
 
-  <view class="card">
-    <view class="row">
-      <text class="card-title no-margin">药品有效期</text>
-      <text class="tag {{expiry.tone}}">{{expiry.text}}</text>
+  <view class="shot-card">
+    <view class="syringe" aria-label="针管图案">💉</view>
+    <view class="shot-content">
+      <text class="shot-label">下一次计划</text>
+      <text class="shot-date">{{nextShot.date || '待记录'}}</text>
+      <text class="shot-note {{nextShot.tone}}">{{nextShot.text}}</text>
     </view>
-    <text class="expiry-date">{{expiry.days === null ? '请在设置或注射记录中填写' : ''}}</text>
+    <view class="shot-add" bindtap="goNeedle">＋</view>
+  </view>
+
+  <view class="expiry-line row">
+    <text>有效期</text>
+    <text class="{{expiry.tone}}">{{expiry.text}}</text>
   </view>
 
   <view class="section-heading row">
-    <text>今日状态</text>
+    <text>身体数据</text>
+    <text class="section-link" bindtap="goTrends">查看变化曲线 →</text>
+  </view>
+  <view class="body-grid" bindtap="goTrends">
+    <view class="body-item" wx:for="{{bodyItems}}" wx:key="label">
+      <text class="body-label">{{item.label}}</text>
+      <text class="body-value">{{item.value}}</text>
+    </view>
+  </view>
+  <view class="target-pill">🎯 {{targetText}}</view>
+
+  <view class="section-heading row">
+    <text>今日生活</text>
     <text class="section-link" bindtap="goDaily">去记录 →</text>
   </view>
-  <view class="stat-grid">
-    <view class="stat-card">
-      <text class="stat-label">体重</text>
-      <text class="stat-value">{{weightText}}</text>
+  <view class="life-card" bindtap="goDaily">
+    <view class="life-item">
+      <text class="life-icon">🍽️</text>
+      <view><text class="life-value">{{mealCount}} / 3 餐</text><text class="life-label">三餐记录</text></view>
     </view>
-    <view class="stat-card">
-      <text class="stat-label">排便</text>
-      <text class="stat-value compact">{{bowelText}}</text>
-    </view>
-  </view>
-
-  <view class="section-heading row">
-    <text>营养目标</text>
-    <text class="section-link" bindtap="goSettings">调整目标</text>
-  </view>
-  <view class="card nutrient-list">
-    <view class="nutrient" wx:for="{{nutrientCards}}" wx:key="key">
-      <view class="row nutrient-meta">
-        <text>{{item.label}}</text>
-        <text class="small {{item.reached ? 'success' : 'muted'}}">{{item.actual}} / {{item.target}} {{item.unit}} · {{item.status}}</text>
-      </view>
-      <view class="progress-track">
-        <view class="progress-fill {{item.reached ? 'complete' : ''}}" style="width: {{item.percent}}%"></view>
-      </view>
+    <view class="life-divider"></view>
+    <view class="life-item">
+      <text class="life-icon">🫧</text>
+      <view><text class="life-value">{{water.count}} 瓶</text><text class="life-label">约 {{water.liters}} L</text></view>
     </view>
   </view>
 
-  <view class="notice">
-    <text>记录工具不替代医疗建议。剂量、频率和不适处理请遵医嘱。</text>
-  </view>
+  <view class="notice">只做生活记录，不替代医生的诊断和用药建议。</view>
 </view>

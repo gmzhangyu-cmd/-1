@@ -1,0 +1,22 @@
+<view class="page">
+  <view class="needle-hero">
+    <view class="big-syringe">💉</view>
+    <view><text class="hero-title">记录一次</text><text class="hero-subtitle">时间与部位清晰留存</text></view>
+  </view>
+
+  <view class="card">
+    <view class="two-column">
+      <view class="field"><text class="field-label">日期 *</text><picker mode="date" value="{{form.date}}" bindchange="onFieldInput" data-field="date"><view class="picker">{{form.date}}</view></picker></view>
+      <view class="field"><text class="field-label">时间 *</text><picker mode="time" value="{{form.time}}" bindchange="onFieldInput" data-field="time"><view class="picker">{{form.time}}</view></picker></view>
+    </view>
+    <view class="two-column">
+      <view class="field"><text class="field-label">剂量（mg）</text><input class="input" type="digit" value="{{form.dosage}}" placeholder="遵医嘱填写" data-field="dosage" bindinput="onFieldInput" /></view>
+      <view class="field"><text class="field-label">部位 *</text><picker range="{{sites}}" value="{{siteIndex}}" bindchange="onSiteChange"><view class="picker">{{form.site}}</view></picker></view>
+    </view>
+    <view class="field"><text class="field-label">药品有效期</text><picker mode="date" value="{{form.expiryDate}}" bindchange="onFieldInput" data-field="expiryDate"><view class="picker">{{form.expiryDate || '选择包装标注日期'}}</view></picker></view>
+    <view class="field"><text class="field-label">批号（可选）</text><input class="input" value="{{form.batchNumber}}" placeholder="便于追溯" data-field="batchNumber" bindinput="onFieldInput" /></view>
+    <view class="field"><text class="field-label">备注（可选）</text><textarea class="textarea" value="{{form.notes}}" maxlength="300" placeholder="例如当时感受、皮肤反应等" data-field="notes" bindinput="onFieldInput" /></view>
+    <button class="primary-button" bindtap="save">保存 💉 记录</button>
+  </view>
+  <view class="tip-card">这里只记录医生已经确定的方案，不推荐或调整剂量。持续或严重不适时请及时联系医生。</view>
+</view>

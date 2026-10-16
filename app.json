@@ -1,29 +1,32 @@
 {
   "pages": [
+    "pages/splash/splash",
     "pages/home/home",
-    "pages/injection/injection",
+    "pages/needle/needle",
     "pages/daily/daily",
     "pages/history/history",
-    "pages/settings/settings"
+    "pages/settings/settings",
+    "pages/trends/trends",
+    "pages/register/register"
   ],
   "window": {
-    "navigationBarBackgroundColor": "#f7fbf8",
+    "navigationBarBackgroundColor": "#fff7fa",
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "轻记健康",
-    "backgroundColor": "#f4f7f5",
+    "backgroundColor": "#fff7fa",
     "backgroundTextStyle": "light"
   },
   "tabBar": {
-    "color": "#7a8580",
-    "selectedColor": "#287a55",
+    "color": "#9a858d",
+    "selectedColor": "#df668f",
     "backgroundColor": "#ffffff",
     "borderStyle": "white",
     "list": [
       { "pagePath": "pages/home/home", "text": "今日" },
-      { "pagePath": "pages/injection/injection", "text": "注射" },
+      { "pagePath": "pages/needle/needle", "text": "💉" },
       { "pagePath": "pages/daily/daily", "text": "记录" },
       { "pagePath": "pages/history/history", "text": "历史" },
-      { "pagePath": "pages/settings/settings", "text": "设置" }
+      { "pagePath": "pages/settings/settings", "text": "目标" }
     ]
   },
   "style": "v2",

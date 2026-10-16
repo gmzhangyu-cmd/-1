@@ -1,9 +1,0 @@
-.tip-card {
-  padding: 26rpx 30rpx;
-  border-radius: 22rpx;
-  background: #eef5f1;
-  color: #5e7167;
-  font-size: 24rpx;
-  line-height: 1.65;
-}
-.tip-title { display: block; margin-bottom: 6rpx; color: #315e48; font-weight: 650; }

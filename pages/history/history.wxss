@@ -1,16 +1,7 @@
-.tabs { display: flex; margin-bottom: 24rpx; padding: 7rpx; border-radius: 18rpx; background: #e8eeea; }
-.tab { flex: 1; padding: 18rpx; border-radius: 14rpx; color: #718077; text-align: center; font-size: 25rpx; }
-.tab.active { background: #fff; color: #245d42; font-weight: 650; box-shadow: 0 5rpx 16rpx rgba(30,60,43,.08); }
-.record-card { margin-bottom: 18rpx; padding: 27rpx; border: 1rpx solid #e5ebe7; border-radius: 23rpx; background: #fff; }
-.record-head { padding-bottom: 18rpx; border-bottom: 1rpx solid #edf1ee; }
-.record-date { font-size: 31rpx; font-weight: 650; }
-.record-time { margin-left: 15rpx; color: #7a8880; }
-.delete { color: #b44b54; font-size: 23rpx; }
-.record-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18rpx; padding: 20rpx 0 10rpx; }
-.record-label, .record-value { display: block; }
-.record-label { margin-bottom: 6rpx; color: #829087; font-size: 22rpx; }
-.record-value { font-size: 29rpx; font-weight: 600; }
-.small-value { font-size: 24rpx; }
-.record-detail { display: block; margin-top: 10rpx; color: #627169; font-size: 24rpx; }
-.record-note { display: block; margin-top: 17rpx; padding: 16rpx; border-radius: 14rpx; background: #f5f8f6; color: #647169; font-size: 24rpx; line-height: 1.5; }
-.injection-main { padding: 20rpx 0 8rpx; font-weight: 600; }
+.tabs { display: flex; margin-bottom: 23rpx; padding: 7rpx; border-radius: 18rpx; background: #f5e7ec; }
+.tab { flex: 1; padding: 17rpx; border-radius: 14rpx; color: #a0848e; text-align: center; font-size: 24rpx; }.tab.active { background: #fff; color: #ce557e; font-weight: 650; box-shadow: 0 5rpx 16rpx rgba(140,68,94,.08); }
+.record-card { margin-bottom: 18rpx; padding: 26rpx; border: 1rpx solid #f1dee5; border-radius: 23rpx; background: #fff; }
+.record-head { padding-bottom: 17rpx; border-bottom: 1rpx solid #f4e7eb; }.record-date { font-size: 29rpx; font-weight: 650; }.record-time { margin-left: 13rpx; color: #a28892; }.delete { color: #d1698d; font-size: 22rpx; }
+.metric-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 9rpx; padding: 20rpx 0 13rpx; }.metric-label,.metric-value { display: block; text-align: center; }.metric-label { color: #aa929b; font-size: 19rpx; }.metric-value { margin-top: 6rpx; font-size: 22rpx; font-weight: 600; }
+.soft-line { display: block; margin-top: 11rpx; padding: 14rpx 17rpx; border-radius: 13rpx; background: #fff6f9; color: #826b74; font-size: 22rpx; line-height: 1.5; }.details { padding: 14rpx 3rpx 0; color: #967e87; font-size: 21rpx; }
+.record-note { display: block; margin-top: 14rpx; color: #89717a; font-size: 22rpx; }.shot-title { display: flex; align-items: center; }.shot-emoji { margin-right: 10rpx; font-size: 30rpx; }.shot-main { padding: 19rpx 2rpx 5rpx; font-weight: 600; }

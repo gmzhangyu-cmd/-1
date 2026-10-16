@@ -1,9 +1,3 @@
-.helper { display: block; margin-top: 10rpx; color: #89958e; font-size: 22rpx; line-height: 1.5; }
-.data-title, .data-subtitle { display: block; }
-.data-title { font-weight: 650; }
-.data-subtitle { margin-top: 7rpx; color: #7d8a83; font-size: 23rpx; }
-.local-tag { padding: 8rpx 15rpx; border-radius: 999rpx; background: #edf5f0; color: #287a55; font-size: 21rpx; }
-.privacy-card { padding: 29rpx; border: 1rpx solid #eadfcf; border-radius: 22rpx; background: #fffaf2; color: #746653; font-size: 23rpx; line-height: 1.7; }
-.privacy-card text { display: block; margin-bottom: 12rpx; }
-.privacy-card text:last-child { margin-bottom: 0; }
-.privacy-title { color: #624f36; font-weight: 650; }
+.account-card { margin-bottom: 22rpx; padding: 25rpx 28rpx; border-radius: 23rpx; background: linear-gradient(135deg,#f8b4ca,#e8789e); color: #fff; box-shadow: 0 12rpx 30rpx rgba(205,87,128,.16); }.account-title,.account-value { display: block; }.account-title { font-size: 27rpx; font-weight: 650; }.account-value { margin-top: 6rpx; opacity: .85; font-size: 21rpx; }.account-arrow { font-size: 46rpx; font-weight: 300; }
+.helper { display: block; margin-top: 9rpx; color: #aa939c; font-size: 21rpx; }.data-title,.data-subtitle { display: block; }.data-title { font-weight: 650; }.data-subtitle { margin-top: 7rpx; color: #a58c95; font-size: 22rpx; }.local-tag { padding: 8rpx 15rpx; border-radius: 999rpx; background: #fdebf2; color: #ce557e; font-size: 20rpx; }
+.privacy-card { padding: 26rpx; border: 1rpx solid #f0dce3; border-radius: 21rpx; background: #fff9fb; color: #8c747d; font-size: 22rpx; line-height: 1.65; }.privacy-title { display: block; margin-bottom: 7rpx; color: #6f505b; font-weight: 650; }

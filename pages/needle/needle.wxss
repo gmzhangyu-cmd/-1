@@ -1,0 +1,3 @@
+.needle-hero { display: flex; align-items: center; gap: 24rpx; padding: 28rpx 4rpx 35rpx; }
+.big-syringe { display: flex; align-items: center; justify-content: center; width: 100rpx; height: 100rpx; border-radius: 30rpx; background: #fbe4ec; font-size: 54rpx; transform: rotate(-10deg); }
+.tip-card { padding: 25rpx 29rpx; border-radius: 21rpx; background: #fcecf2; color: #8e727d; font-size: 23rpx; line-height: 1.65; }

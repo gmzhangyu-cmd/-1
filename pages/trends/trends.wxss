@@ -1,0 +1,12 @@
+.metric-tabs { width: 100%; margin-bottom: 22rpx; white-space: nowrap; }
+.metric-tab { display: inline-block; margin-right: 12rpx; padding: 14rpx 24rpx; border: 1rpx solid #f1d7e0; border-radius: 999rpx; background: #fff; color: #9a7e88; font-size: 23rpx; }
+.metric-tab.active { border-color: #df668f; background: #df668f; color: #fff; }
+.chart-card { padding: 26rpx 0 13rpx; border: 1rpx solid #f2dee5; border-radius: 26rpx; background: #fff; box-shadow: 0 12rpx 35rpx rgba(172,83,115,.07); }
+.chart-title { padding: 0 27rpx 15rpx; }
+.chart-label,.chart-count { display: block; }.chart-label { font-size: 29rpx; font-weight: 650; }.chart-count { margin-top: 5rpx; color: #ad959e; font-size: 21rpx; }.chart-unit { color: #c85a7e; font-size: 22rpx; }
+.chart { margin: 0 auto; }
+.section-title { margin: 35rpx 4rpx 18rpx; font-size: 29rpx; font-weight: 650; }
+.summary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15rpx; }
+.summary-card { padding: 23rpx; border: 1rpx solid #f1dfe5; border-radius: 20rpx; background: #fff; }
+.summary-label,.summary-value,.summary-change { display: block; }.summary-label { color: #9f858f; font-size: 21rpx; }.summary-value { margin: 8rpx 0; font-size: 29rpx; font-weight: 650; }.summary-change { color: #d16488; font-size: 20rpx; }
+.trend-note { margin-top: 24rpx; padding: 22rpx; color: #aa929b; font-size: 21rpx; line-height: 1.6; text-align: center; }
